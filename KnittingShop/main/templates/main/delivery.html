@@ -1,0 +1,31 @@
+{% load static %}
+<!-- Раздел ДОСТАВКА-->
+<div id="delivery-section" class="container my-5">
+  <h2 class="text-center mb-4 fw-bold">ДОСТАВКА</h2>
+  <div class="row justify-content-center">
+      <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="delivery-item">
+              <img src="{% static 'deps/icons/pickup_icon.png' %}" alt="Самовывоз">
+              <h3>Самовывоз</h3>
+              <p>Заберите заказ самостоятельно в нашем магазине в удобное время по предварительной договорённости.</p>
+              <p class="delivery-price"><strong>Бесплатно</strong></p>
+          </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="delivery-item">
+              <img src="{% static 'deps/icons/russian_post_icon.png' %}" alt="Почта России">
+              <h3>Почта России</h3>
+              <p>Доставка по всей России в течение 3–7 дней. После отправки вы получите трек-номер для отслеживания.</p>
+              <p class="delivery-price"><strong>от 500 Руб.</strong></p>
+          </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="delivery-item">
+              <img src="{% static 'deps/icons/sdek_delivery_icon.png' %}" alt="СДЭК">
+              <h3>СДЭК</h3>
+              <p>Доставка до пункта выдачи СДЭК в вашем городе. Срок доставки от 1 до 3 дней.</p>
+              <p class="delivery-price"><strong>при заказе от 3000 Руб</strong></p>
+          </div>
+      </div>
+  </div>
+</div>

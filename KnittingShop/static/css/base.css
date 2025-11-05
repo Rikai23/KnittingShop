@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  padding-top: 56px;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  background: #fdfaf6;
+}
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Чтобы блок каталога начинался под навбаром */
+.row.position-fixed {
+  top: 70px;
+}
+.dropdown-toggle::after {
+  content: none;
+}
+
+/* Фон для секции */
+#background-section {
+    background-color: #f8f5f0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Чтобы при переходе по якорю заголовок не скрывался под фиксированной навигацией */
+#new-products,
+#sale-products,
+#delivery-section,
+#about-products,
+#contacts {
+    scroll-margin-top: 180px;
+}
+
+/* Усиление заголовков разделов */
+#new-products h2,
+#sale-products h2,
+#delivery-section h2,
+#about-products h2,
+#contacts h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+}
+
+/* Анимация текста */
+.slide-out-left {
+       animation: slideOut 1s forwards;
+}
+.slide-in-right {
+       animation: slideIn 1s forwards;
+}
+@keyframes slideOut {
+       from { transform: translateX(0); opacity: 1; }
+       to { transform: translateX(-100%); opacity: 0; }
+}
+@keyframes slideIn {
+       from { transform: translateX(100%); opacity: 0; }
+       to { transform: translateX(0); opacity: 1; }
+}
+
+/* --- Bootstrap корректировки (адаптивность) --- */
+@media (min-width: 992px) {
+    .delivery-item {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    html, body {
+        overflow-x: hidden;
+    }
+
+    #welcome {
+        width: 100vw;
+    }
+
+    .welcome-content-wrapper {
+        padding: 0 10px;
+        box-sizing: border-box;
+        word-break: break-word;
+    }
+}

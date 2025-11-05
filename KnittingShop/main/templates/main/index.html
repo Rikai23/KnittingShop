@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_main_footer %}
+    <link rel="stylesheet" href="{% static 'css/my_footer.css' %}">
+{% endblock css_main_footer %}
+
+{% block add_tabs %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'index' %}#sale-products">Распродажа</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'index' %}#new-products">Новинки</a>
+    </li>
+{% endblock add_tabs %}
+
+{% block content %}
+<div id="welcome" class="d-flex flex-column justify-content-center align-items-center vh-100 text-center text-white overflow-hidden">
+    <div class="welcome-content-wrapper">
+        <h1 id="welcome-text" >{{ texts.0.title }}</h1>
+        <p id="welcome-desc">{{ texts.0.desc }}</p>
+    </div>
+</div>
+
+<!-- Передаём Python-список в JS -->
+{{ texts|json_script:"texts-data" }}
+
+<!-- Раздел НОВИНКИ -->
+{% include "main/new_products.html" %}
+
+<!-- Раздел РАСПРОДАЖА -->
+{% include "main/sale_products.html" %}
+
+<!-- Раздел О ПРОДУКЦИИ -->
+{% include "main/about_products.html" %}
+
+<!-- Раздел ДОСТАВКА -->
+{% include "main/delivery.html" %}
+
+<!-- Раздел КОНТАКТНАЯ ИНФОРМАЦИЯ -->
+{% include "main/contact_information.html" %}
+
+{% endblock content %}
+
+{% block footer %}
+    <footer class="py-4 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">&copy; 2025 Вязаные изделия. Все права защищены.</p>
+        </div>
+    </footer>
+{% endblock footer %}

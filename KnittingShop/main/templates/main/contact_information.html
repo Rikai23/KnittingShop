@@ -1,0 +1,30 @@
+{% load static %}
+<!-- Раздел ОНТАКТНАЯ ИНФОРМАЦИЯ -->
+<section id="contacts" class="contacts-section">
+    <div class="container text-center">
+        <h2>КОНТАКТНАЯ ИНФОРМАЦИЯ</h2>
+
+        <!-- Иконки соцсетей -->
+        <div class="social-icons">
+            <a href="https://t.me/your_telegram" target="_blank">
+                <img src="{% static 'deps/icons/telegram.png' %}" alt="Telegram">
+            </a>
+            <a href="https://vk.com/your_vk" target="_blank">
+                <img src="{% static 'deps/icons/vk.png' %}" alt="ВКонтакте">
+            </a>
+        </div>
+
+        <!-- Форма обратной связи -->
+        <form method="post" action="" class="contact-form">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="email" name="email" placeholder="Ваш Email" required>
+            <textarea name="message" rows="4" placeholder="Ваше сообщение" required></textarea>
+            <button type="submit">Отправить</button>
+            <p class="privacy-text">
+                Нажимая на кнопку «Отправить», вы даёте согласие на обработку персональных данных и соглашаетесь с
+                <a href="" class="privacy-link">Политикой конфиденциальности</a>.
+            </p>
+        </form>
+    </div>
+</section>

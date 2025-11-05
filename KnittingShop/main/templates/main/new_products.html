@@ -1,0 +1,37 @@
+{% load static %}
+<!-- Раздел НОВИНКИ -->
+<section id="new-products" class="container my-5">
+    <h2 class="text-center mb-4">НОВИНКИ</h2>
+    <div class="row g-4">
+        {% for product in latest_products %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <!-- Слайдер изображений -->
+                    <div class="product-slider position-relative overflow-hidden rounded" style="padding-top: 100%;">
+                        {% if product.images.all %}
+                            {% for image in product.images.all %}
+                                <img src="{{ image.image.url }}" alt="{{ product.name }}"
+                                     class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover {% if forloop.first %}active{% endif %}">
+                            {% endfor %}
+                        {% else %}
+                            <img src="{% static 'images/no_photo.png' %}" alt="Нет фото"
+                                 class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover active">
+                        {% endif %}
+                    </div>
+
+                    <!-- Информация о товаре -->
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text small text-muted">{{ product.description|truncatechars:80 }}</p>
+                        <p class="fw-bold">{{ product.price }} ₽</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="text-center">
+                <img src="{% static 'images/no_products.png' %}" alt="Нет товаров" class="img-fluid mb-3 w-100" style="max-width:400px; object-fit: contain;">
+                <p>Пока нет товаров 😔</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
