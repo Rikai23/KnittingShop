@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block local_css %}
+    <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+{% endblock local_css %}
+
+{% block content %}
+<section id="catalog" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5 fw-bold">КАТАЛОГ ИЗДЕЛИЙ</h2>
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
+            <!-- Категории -->
+            <div class="btn-group flex-wrap" role="group">
+                <a href="{% url 'catalog:index' %}" class="btn btn-outline-secondary {% if not active_category %}active{% endif %}">
+                    Все
+                </a>
+                {% for category in categories %}
+                    <a href="{% url 'catalog:index' %}?category={{ category.slug }}"
+                       class="btn btn-outline-secondary {% if active_category == category.slug %}active{% endif %}">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+            <!-- Сортировка -->
+            <form method="get" class="d-flex align-items-center">
+                {% if active_category %}
+                    <input type="hidden" name="category" value="{{ active_category }}">
+                {% endif %}
+                <label for="sort" class="me-2 fw-semibold text-nowrap">Сортировать по:</label>
+                <select name="sort" id="sort" class="form-select form-select-sm" onchange="this.form.submit()">
+                    <option value="">Выберите...</option>
+                    <option value="price_asc" {% if sort == 'price_asc' %}selected{% endif %}>Цене (по возрастанию)</option>
+                    <option value="price_desc" {% if sort == 'price_desc' %}selected{% endif %}>Цене (по убыванию)</option>
+                    <option value="date_desc" {% if sort == 'date_desc' %}selected{% endif %}>Новизне (сначала новые)</option>
+                    <option value="date_asc" {% if sort == 'date_asc' %}selected{% endif %}>Дате (сначала старые)</option>
+                </select>
+            </form>
+        </div>
+
+      <!-- Сетка товаров -->
+        <div class="row g-4">
+            {% for product in goods %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 text-center shadow-sm border-0">
+                      <img src="{% static 'images/about_products1.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ product.name }}</h5>
+                          {% if product.sale_price %}
+                              <p class="text-muted text-decoration-line-through mb-1">{{ product.price }} ₽</p>
+                              <p class="fw-bold text-danger">{{ product.sale_price }} ₽</p>
+                          {% else %}
+                              <p class="fw-bold">{{ product.price }} ₽</p>
+                          {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center mt-4">Товары не найдены 😔</p>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+{% endblock content %}

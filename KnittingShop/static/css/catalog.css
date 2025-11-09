@@ -1,0 +1,44 @@
+#catalog {
+  background-color: #fdfaf6;
+}
+
+#catalog h2 {
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#catalog .btn-group .btn {
+  margin: 5px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+#catalog .btn-group .btn.active,
+#catalog .btn-group .btn:hover {
+  background-color: #f1e4d3;
+  color: #000;
+  border-color: #d2b48c;
+}
+
+#catalog .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#catalog .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#catalog .card img {
+  height: 280px;
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  #catalog .card img {
+    height: 200px;
+  }
+}
